@@ -1,7 +1,7 @@
 const { sendSlackMsg } = require('./slack');
 const { filterWord } = require('./util');
 
-(async () => {
+exports.run = async () => {
 
     const ruliwebUrl = 'https://m.ruliweb.com/market/board/1020'
     
@@ -31,6 +31,6 @@ const { filterWord } = require('./util');
         
     if (result.length > 0) await sendSlackMsg(result)
 
-})()
+}
 
 
