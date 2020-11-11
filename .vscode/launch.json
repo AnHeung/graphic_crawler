@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Launch Program",
-            "program": "${workspaceFolder}/ruriweb_crawler.js",
+            "program": "${workspaceFolder}/api.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
