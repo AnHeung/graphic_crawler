@@ -1,6 +1,6 @@
 const schedule = require('node-schedule')
 const quasarzone_crawler = require('./quasarzone_crawler')
-const ruriweb_crawler = require('./ruriweb_crawler')
+const ruriweb_crawler = require('./ruliweb_crawler')
 const express = require('express')
 const app = express()
 const port = 5500
@@ -17,7 +17,7 @@ async function run_crawler() {
     } 
 }
 
-schedule.scheduleJob('*/10 * * * *', run_crawler)
+schedule.scheduleJob('*/1 * * * *', run_crawler)
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
