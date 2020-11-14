@@ -17,7 +17,7 @@ async function run_crawler() {
     } 
 }
 
-schedule.scheduleJob('*/1 * * * *', run_crawler)
+schedule.scheduleJob('*/5 * * * *', run_crawler)
 
 app.get('/', (req, res) => {
     res.send('Hello World!')

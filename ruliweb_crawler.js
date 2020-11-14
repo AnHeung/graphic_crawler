@@ -4,7 +4,7 @@ const { ruliwebUrl } = require('./appConstants');
 const {saveSearchData } = require('./util/files');
 const {ruliweb} = require('./appConstants');
 
-(async () => {
+exports.run = async () => {
 
     const $ = await getSiteDomInfo(ruliwebUrl)
 
@@ -27,6 +27,6 @@ const {ruliweb} = require('./appConstants');
         }
     }
 
-})()
+}
 
 

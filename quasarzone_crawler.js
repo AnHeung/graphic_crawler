@@ -4,7 +4,7 @@ const { quasarzoneBaseUrl, quasarzoneUrl } = require('./appConstants')
 const {saveSearchData } = require('./util/files');
 const {quasarzone} = require('./appConstants');
 
-(async () => {
+exports.run = async () => {
 
     const $ = await getSiteDomInfo(quasarzoneUrl);
 
@@ -27,4 +27,4 @@ const {quasarzone} = require('./appConstants');
             }
     }
 
-})()
+}
