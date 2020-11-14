@@ -7,7 +7,7 @@ const {ruliweb} = require('./appConstants');
 exports.run = async () => {
 
     const $ = await getSiteDomInfo(ruliwebUrl)
-
+    
     if ($) {
 
         const crawlerData = Array.from($('td.subject'))

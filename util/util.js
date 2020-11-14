@@ -9,7 +9,7 @@ const {getKeyword } = require('../repository/repository');
 // }
 
 const filterWord = (title , format)=>{
-    const regex = new RegExp(format) || '(아이폰|플스5|PS5)'
+    const regex = new RegExp(format,"gmi") || '(아이폰|플스5|PS5)'
     if (title) return regex.exec(title)
     else return false
 }
