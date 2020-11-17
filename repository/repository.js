@@ -15,7 +15,7 @@ exports.addKeyword = async keywordData => {
 
 }
 
-exports.getKeyword = async category => {
+exports.getKeywords = async category => {
 
     const searchApiUrl = process.env.SEARCH_API_URL
     const params = { category: category }
@@ -27,8 +27,8 @@ exports.getKeyword = async category => {
                 throw new Error(e)
             })
             if(response){
-                const regex = response.data.data.regex
-                return regex
+                const regexs = response.data.data || []
+                return regexs
             }
             return false
     } catch (e) {

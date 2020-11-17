@@ -7,6 +7,9 @@ const {ruliweb} = require('./appConstants');
 exports.run = async () => {
 
     const $ = await getSiteDomInfo(ruliwebUrl)
+
+    // await addKeyword({category : 'ruliweb', regex: '(이베이|ebay|뉴에그|newegg)' ,siteUrl:ruliwebUrl})
+    // await addKeyword({category : 'quasarzone', regex: '(이베이|ebay|뉴에그|newegg)' ,siteUrl:'https://quasarzone.com/bbs/qb_saleinfo'})
     
     if ($) {
 
@@ -26,7 +29,6 @@ exports.run = async () => {
             await sendSlackMsg(result)
         }
     }
-
 }
 
 

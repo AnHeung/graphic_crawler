@@ -1,17 +1,20 @@
 const Axios = require('axios');
 const cheerio = require('cheerio');
 const {getSearchData } = require('./files');
-const {getKeyword } = require('../repository/repository');
+const {getKeywords } = require('../repository/repository');
 
 // exports.filterWord = (title) => {
 //     if (title) return /(ASUS | 에이수스 | 이엠텍 | 에브가 | Evga | Emtek).+ (3080)/.exec(title)
 //     else return false
 // }
 
-const filterWord = (title , format)=>{
-    const regex = new RegExp(format,"gmi") || '(아이폰|플스5|PS5)'
-    if (title) return regex.exec(title)
-    else return false
+//필터값을 목록을 리스트로 수정
+const filterWord = (title , formats)=>{
+ return  formats.some(format=>{
+        const regex = new RegExp(format.regex,"gmi")
+        if(title) return regex.exec(title)
+        return false
+    })
 }
 
 exports.getCompareData = async (arr , site)=>{
@@ -19,11 +22,11 @@ exports.getCompareData = async (arr , site)=>{
     if(arr && arr.length > 0){
 
         const previousSearchData = await getSearchData()
-        const regexFormat = await getKeyword(site)
+        const regexFormats = await getKeywords(site)
 
         return arr.reduce((acc, data) => {
             const {title} = data
-            if(filterWord(title , regexFormat)){
+            if(filterWord(title , regexFormats)){
                 previousSearchData.find(data=> data.title === title) || acc.push(data)
             }
             return acc;    
