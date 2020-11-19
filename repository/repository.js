@@ -1,5 +1,5 @@
 const Axios = require('axios');
-require('dotenv').config()
+require('dotenv-flow').config();
 
 exports.addKeyword = async keywordData => {
 
@@ -19,6 +19,7 @@ exports.getKeywords = async category => {
 
     const searchApiUrl = process.env.SEARCH_API_URL
     const params = { category: category }
+    console.log(searchApiUrl)
 
     try {
 
