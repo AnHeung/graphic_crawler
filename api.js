@@ -1,11 +1,7 @@
 const quasarzone_crawler = require('./quasarzone_crawler');
 const ruriweb_crawler = require('./ruliweb_crawler');
-require('dotenv-flow').config({
-    node_env: process.env.NODE_ENV || 'dev'
-});
 
-
-exports.run = async () => {
+exports.run = async ()=>{
     try {
         console.log('*** graphic_card_crawler start ***')
         await quasarzone_crawler.run()
@@ -14,5 +10,5 @@ exports.run = async () => {
     } catch (error) {
         console.error(error)
         process.exit()
-    }
+    } 
 }
