@@ -12,9 +12,9 @@ exports.sendSlackMsg = async (crawlerData) => {
     }
 }
 
-function makeAttachment(mangaData) {
+function makeAttachment(crawlerData) {
 
-    return mangaData.reduce((acc, data) => {
+    return crawlerData.reduce((acc, data) => {
 
         const {category, title , url , date}  = data
        
@@ -56,9 +56,11 @@ function makeAttachment(mangaData) {
 
 function configMessageBody(crawlerData) {
 
-    const attchment = makeAttachment(crawlerData  )
+    const attchment = makeAttachment(crawlerData)
+    const title = "푸쉬알림"
 
     return {
+        "text" : title,
         "attachments": attchment
     }
 }
