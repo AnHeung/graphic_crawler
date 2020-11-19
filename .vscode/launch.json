@@ -7,7 +7,7 @@
         
         {
             "name": "Launch Program",
-            "program": "${workspaceFolder}/ruliweb_crawler.js",
+            "program": "${workspaceFolder}/api.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
