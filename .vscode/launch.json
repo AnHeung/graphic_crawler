@@ -7,7 +7,7 @@
         
         {
             "name": "Launch Program",
-            "program": "${workspaceFolder}/api.js",
+            "program": "${workspaceFolder}/clien_crawler.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
