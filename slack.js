@@ -57,7 +57,7 @@ function makeAttachment(crawlerData) {
 function configMessageBody(crawlerData) {
 
     const attchment = makeAttachment(crawlerData)
-    const title = "푸쉬알림"
+    const title = crawlerData.length > 0  ? title[0] : "푸쉬알림"
 
     return {
         "text" : title,
