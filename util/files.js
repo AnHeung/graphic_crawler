@@ -1,9 +1,9 @@
 const fs = require('fs');
 const defaultPath = './searchData.json'
 
-exports.saveSearchData = async (searchDataArr) => {
+const saveSearchData = async (searchDataArr) => {
 
-    const searchJson = await this.getSearchData()
+    const searchJson = await getSearchData()
 
     const addData = searchDataArr.reduce((acc, { title, url, category, date }) => {
         if (!isExist(searchJson,title)) {
@@ -38,7 +38,7 @@ async function isFileExist() {
     })
 }
 
-exports.getSearchData = async () => {
+const getSearchData = async () => {
     if (await isFileExist()) {
         const json = fs.readFileSync(defaultPath, 'utf-8')
         if (json) {
@@ -49,3 +49,9 @@ exports.getSearchData = async () => {
         return []
     }
 }
+
+module.exports = {
+    getSearchData:getSearchData,
+    saveSearchData:saveSearchData
+}
+
