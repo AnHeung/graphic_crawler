@@ -1,8 +1,8 @@
-const { sendSlackMsg } = require('./slack');
-const { getCompareData, getSiteDomInfo } = require('./util/util');
-const {clienUrl , clienbaseUrl } = require('./appConstants')
-const {saveSearchData } = require('./util/files');
-const {clien} = require('./appConstants');
+const { getCompareData, getSiteDomInfo } = require('../util/util');
+const {clienUrl , clienbaseUrl } = require('../appConstants')
+const {saveSearchData } = require('../util/files');
+const {clien, type} = require('../appConstants');
+const {sendSlackMsg} = require('../repository/repository');
 
 
 exports.run = async () => {
@@ -24,7 +24,7 @@ exports.run = async () => {
 
             if (result.length > 0) {
                 await saveSearchData(result)
-                await sendSlackMsg(result)
+                await sendSlackMsg(type, result)
             }
     }
 

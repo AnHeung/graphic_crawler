@@ -1,16 +1,12 @@
-const { sendSlackMsg } = require('./slack');
-const { getCompareData, getSiteDomInfo } = require('./util/util');
-const { ruliwebUrl } = require('./appConstants');
-const {saveSearchData } = require('./util/files');
-const {ruliweb} = require('./appConstants');
+const { getCompareData, getSiteDomInfo } = require('../util/util');
+const {saveSearchData } = require('../util/files');
+const {ruliweb ,ruliwebUrl, type} = require('../appConstants');
+const {sendSlackMsg} = require('../repository/repository');
 
 exports.run = async () => {
 
     const $ = await getSiteDomInfo(ruliwebUrl)
 
-    // await addKeyword({category : 'ruliweb', regex: '(이베이|ebay|뉴에그|newegg)' ,siteUrl:ruliwebUrl})
-    // await addKeyword({category : 'quasarzone', regex: '(이베이|ebay|뉴에그|newegg)' ,siteUrl:'https://quasarzone.com/bbs/qb_saleinfo'})
-    
     if ($) {
 
         const crawlerData = Array.from($('td.subject'))
@@ -26,7 +22,7 @@ exports.run = async () => {
             
         if (result.length > 0) {
             await saveSearchData(result)
-            await sendSlackMsg(result)
+            await sendSlackMsg(type, result)
         }
     }
 }

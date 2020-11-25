@@ -1,6 +1,6 @@
-const quasarzone_crawler = require('./quasarzone_crawler');
-const ruriweb_crawler = require('./ruliweb_crawler');
-const clien_crawler = require('./clien_crawler');
+const quasarzone_crawler = require('./crawler/quasarzone_crawler');
+const ruriweb_crawler = require('./crawler/ruliweb_crawler');
+const clien_crawler = require('./crawler/clien_crawler');
 
 exports.run = async ()=>{
     try {

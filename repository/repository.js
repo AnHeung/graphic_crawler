@@ -1,11 +1,11 @@
 const Axios = require('axios');
+const {SLACK_API_URL, SEARCH_API_URL} = require('../appConstants');
 
-exports.addKeyword = async keywordData => {
+const addKeyword = async keywordData => {
 
-    const searchApiUrl = process.env.SEARCH_API_URL
     const params = { keyword: keywordData }
 
-    return await Axios.post(searchApiUrl, params)
+    return await Axios.post(SEARCH_API_URL, params)
         .then(true)
         .catch(e => {
             console.error(e)
@@ -14,14 +14,24 @@ exports.addKeyword = async keywordData => {
 
 }
 
-exports.getKeywords = async category => {
+const sendSlackMsg = async (type,data)=>{
+    
+    const params = { type, data}
 
-    const searchApiUrl = process.env.SEARCH_API_URL
+    return await Axios.post(SLACK_API_URL, params)
+        .then(true)
+        .catch(e => {
+            console.error(e)
+            return false
+        })
+}
+
+const getKeywords = async category => {
+
     const params = { category: category }
 
     try {
-
-        const response = await Axios.get(searchApiUrl, { params })
+        const response = await Axios.get(SEARCH_API_URL, { params })
             .catch(e => {
                 throw new Error(e)
             })
@@ -34,7 +44,10 @@ exports.getKeywords = async category => {
         console.error(e)
         return false
     }
+}
 
-
-
+module.exports ={
+    getKeywords:getKeywords,
+    addKeyword:addKeyword,
+    sendSlackMsg,sendSlackMsg
 }

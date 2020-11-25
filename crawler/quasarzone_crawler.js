@@ -1,9 +1,7 @@
-const { sendSlackMsg } = require('./slack');
-const { getCompareData, getSiteDomInfo } = require('./util/util');
-const { quasarzoneBaseUrl, quasarzoneUrl } = require('./appConstants')
-const {saveSearchData } = require('./util/files');
-const {quasarzone} = require('./appConstants');
-
+const { getCompareData, getSiteDomInfo } = require('../util/util');
+const { quasarzone, quasarzoneBaseUrl, quasarzoneUrl ,type} = require('../appConstants')
+const {saveSearchData } = require('../util/files');
+const {sendSlackMsg} = require('../repository/repository');
 
 exports.run = async () => {
 
@@ -24,8 +22,7 @@ exports.run = async () => {
 
             if (result.length > 0) {
                 await saveSearchData(result)
-                await sendSlackMsg(result)
+                await sendSlackMsg(type, result)
             }
     }
-
 }
