@@ -1,11 +1,11 @@
 const Axios = require('axios');
-const {SLACK_API_URL, SEARCH_API_URL} = require('../appConstants');
+const {SLACK_API_URL, HOTDEAL_API_URL} = require('../appConstants');
 
 const addKeyword = async keywordData => {
 
     const params = { keyword: keywordData }
 
-    return await Axios.post(SEARCH_API_URL, params)
+    return await Axios.post(HOTDEAL_API_URL, params)
         .then(true)
         .catch(e => {
             console.error(e)
@@ -31,7 +31,7 @@ const getKeywords = async category => {
     const params = { category: category }
 
     try {
-        const response = await Axios.get(SEARCH_API_URL, { params })
+        const response = await Axios.get(HOTDEAL_API_URL, { params })
             .catch(e => {
                 throw new Error(e)
             })

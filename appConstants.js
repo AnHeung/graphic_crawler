@@ -13,7 +13,7 @@ const clienUrl = 'https://www.clien.net/service/board/jirum'
 const clienbaseUrl = 'https://www.clien.net'
 const clien = 'clien'
 const SLACK_API_URL = process.env.SLACK_API_URL
-const SEARCH_API_URL = process.env.SEARCH_API_URL
+const HOTDEAL_API_URL = process.env.HOTDEAL_API_URL
 
 module.exports = {
     type:type,
@@ -26,5 +26,5 @@ module.exports = {
     clienbaseUrl: clienbaseUrl,
     clien: clien,
     SLACK_API_URL:SLACK_API_URL,
-    SEARCH_API_URL:SEARCH_API_URL
+    HOTDEAL_API_URL:HOTDEAL_API_URL
 }
