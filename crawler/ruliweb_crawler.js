@@ -11,7 +11,7 @@ exports.run = async () => {
 
         const crawlerData = Array.from($('td.subject'))
             .map(data => {
-                const title = $(data).find('a.deco').text().replace(/([\t|\n|\s])/gi, "")
+                const title = $(data).find('a.deco').text().replace(/([\t|\n])/gi, "")
                 const url = $(data).find('a.deco').attr('href')
                 const category = "루리웹"
                 const date = $(data).find('span.time').text().replace(/([\t|\n|\s])/gi, "")

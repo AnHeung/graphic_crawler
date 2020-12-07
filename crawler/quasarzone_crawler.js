@@ -11,7 +11,7 @@ exports.run = async () => {
 
         const crawlerData = Array.from($('div.market-info-list-cont'))
             .map(data => {
-                const title = $(data).find('a').text().replace(/([\t|\n|\s])/gi, "")
+                const title = $(data).find('a').text().replace(/([\t|\n])/gi, "")
                 const url = quasarzoneBaseUrl + $(data).find('a').attr('href')
                 const category = "퀘이사존"
                 const date = $(data).find('span.date').text().replace(/([\t|\n|\s])/gi, "")

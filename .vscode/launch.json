@@ -7,7 +7,7 @@
         
         {
             "name": "Launch Program",
-            "program": "${workspaceFolder}/crawler/quasarzone_crawler.js",
+            "program": "${workspaceFolder}/crawler/ruliweb_crawler.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
