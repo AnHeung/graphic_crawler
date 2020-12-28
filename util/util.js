@@ -2,11 +2,7 @@ const Axios = require('axios');
 const cheerio = require('cheerio');
 const {getSearchData } = require('./files');
 const {getKeywords } = require('../repository/repository');
-
-// exports.filterWord = (title) => {
-//     if (title) return /(ASUS | 에이수스 | 이엠텍 | 에브가 | Evga | Emtek).+ (3080)/.exec(title)
-//     else return false
-// }
+const { text } = require('express');
 
 //필터값을 목록을 리스트로 수정
 const filterWord = (title , formats)=>{
@@ -25,9 +21,9 @@ exports.getCompareData = async (arr , site)=>{
         const regexFormats = await getKeywords(site)
 
         return arr.reduce((acc, data) => {
-            const {title} = data
+            const {title, date} = data
             if(filterWord(title , regexFormats)){
-                previousSearchData.find(data=> data.title === title) || acc.push(data)
+                previousSearchData.find(searchData=> searchData.title === title && searchData.date === date) || acc.push(data)
             }
             return acc;    
         } ,[])
@@ -35,7 +31,9 @@ exports.getCompareData = async (arr , site)=>{
     return [];
 }
 
-exports.textClean = (text) => text.replace(/([\t|\n|\s])/gi, "")
+const isEmpty = (text)=> text && text !== "" 
+
+exports.textClean = (text) => isEmpty(text) ? text.replace(/[\n|\t|\r]/gmi, "").trim() : ""
 
 exports.getSiteDomInfo = async url => {
 

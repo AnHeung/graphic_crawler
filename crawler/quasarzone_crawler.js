@@ -1,4 +1,4 @@
-const { getCompareData, getSiteDomInfo } = require('../util/util');
+const { getCompareData, getSiteDomInfo  , textClean} = require('../util/util');
 const { quasarzone, quasarzoneBaseUrl, quasarzoneUrl ,type} = require('../appConstants')
 const {saveSearchData } = require('../util/files');
 const {sendSlackMsg} = require('../repository/repository');
@@ -11,10 +11,10 @@ exports.run = async () => {
 
         const crawlerData = Array.from($('div.market-info-list-cont'))
             .map(data => {
-                const title = $(data).find('a').text().replace(/([\t|\n])/gi, "")
+                const title = textClean($(data).find('span.ellipsis-with-reply-cnt').text())
                 const url = quasarzoneBaseUrl + $(data).find('a').attr('href')
                 const category = "퀘이사존"
-                const date = $(data).find('span.date').text().replace(/([\t|\n|\s])/gi, "")
+                const date = textClean($(data).find('span.date').text())
                 return { category, title, url, date }
             })
            
