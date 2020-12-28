@@ -1,7 +1,7 @@
 const { getCompareData, getSiteDomInfo , textClean } = require('../util/util');
 const {saveSearchData } = require('../util/files');
 const {ruliweb ,ruliwebUrl, type} = require('../appConstants');
-const {sendSlackMsg} = require('../repository/repository');
+const {sendSlackMsg , addHotDealDatas} = require('../repository/repository');
 
 exports.run = async () => {
 
@@ -20,7 +20,7 @@ exports.run = async () => {
             const result = await getCompareData(crawlerData , ruliweb)
             
         if (result.length > 0) {
-            await saveSearchData(result)
+            await addHotDealDatas(result)
             await sendSlackMsg(type, result)
         }
     }

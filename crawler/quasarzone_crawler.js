@@ -1,7 +1,6 @@
 const { getCompareData, getSiteDomInfo  , textClean} = require('../util/util');
 const { quasarzone, quasarzoneBaseUrl, quasarzoneUrl ,type} = require('../appConstants')
-const {saveSearchData } = require('../util/files');
-const {sendSlackMsg} = require('../repository/repository');
+const {sendSlackMsg, addHotDealDatas} = require('../repository/repository');
 
 exports.run = async () => {
 
@@ -21,7 +20,7 @@ exports.run = async () => {
             const result = await getCompareData(crawlerData , quasarzone)
 
             if (result.length > 0) {
-                await saveSearchData(result)
+                await addHotDealDatas(result)
                 await sendSlackMsg(type, result)
             }
     }

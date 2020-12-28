@@ -1,8 +1,7 @@
 const Axios = require('axios');
 const cheerio = require('cheerio');
 const { getSearchData } = require('./files');
-const { getKeywords } = require('../repository/repository');
-const { text } = require('express');
+const { getKeywords , getHotdealDatas , addHotDealDatas} = require('../repository/repository');
 
 //필터값을 목록을 리스트로 수정
 const filterWord = (title, formats) => {
@@ -17,13 +16,14 @@ exports.getCompareData = async (arr, site) => {
 
     if (arr && arr.length > 0) {
 
-        const previousSearchData = await getSearchData()
+        // const previousSearchData = await getSearchData()
+        const previousSearchData = await getHotdealDatas() || []
         const regexFormats = await getKeywords(site)
 
         return arr.reduce((acc, data) => {
             const { title, date } = data
             if (filterWord(title, regexFormats)) {
-                previousSearchData.find(searchData => searchData.title !== title && searchData.date !== date) && acc.push(data)
+                previousSearchData.find(searchData => searchData.title === title && searchData.date === date) || acc.push(data)
             }
             return acc;
         }, [])

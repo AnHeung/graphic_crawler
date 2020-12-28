@@ -1,11 +1,11 @@
 const Axios = require('axios');
-const {SLACK_API_URL, HOTDEAL_API_URL} = require('../appConstants');
+const { SLACK_API_URL, HOTDEAL_API_URL } = require('../appConstants');
 
 const addKeyword = async keywordData => {
 
     const params = { keyword: keywordData }
 
-    return await Axios.post(HOTDEAL_API_URL, params)
+    return await Axios.post(`${HOTDEAL_API_URL}keyword`, params)
         .then(true)
         .catch(e => {
             console.error(e)
@@ -14,9 +14,9 @@ const addKeyword = async keywordData => {
 
 }
 
-const sendSlackMsg = async (type,data)=>{
-    
-    const params = { type, data}
+const sendSlackMsg = async (type, data) => {
+
+    const params = { type, data }
 
     return await Axios.post(SLACK_API_URL, params)
         .then(true)
@@ -26,28 +26,60 @@ const sendSlackMsg = async (type,data)=>{
         })
 }
 
-const getKeywords = async category => {
-
-    const params = { category: category }
+const getHotdealDatas = async () => {
 
     try {
-        const response = await Axios.get(HOTDEAL_API_URL, { params })
+        const response = await Axios.get(`${HOTDEAL_API_URL}data`)
             .catch(e => {
                 throw new Error(e)
             })
-            if(response){
-                const regexs = response.data.data || []
-                return regexs
-            }
-            return false
+        if (response) {
+            const hotDealDatas = response.data.data || []
+            return hotDealDatas
+        }
+        return false
     } catch (e) {
         console.error(e)
         return false
     }
 }
 
-module.exports ={
-    getKeywords:getKeywords,
-    addKeyword:addKeyword,
-    sendSlackMsg,sendSlackMsg
+const addHotDealDatas = async datas => {
+    
+    const params = { datas: datas }
+
+    return await Axios.post(`${HOTDEAL_API_URL}data`, params)
+    .then(true)
+    .catch(e => {
+        console.error(e)
+        return false
+    })
+}
+
+const getKeywords = async category => {
+
+    const params = { category: category }
+
+    try {
+        const response = await Axios.get(`${HOTDEAL_API_URL}keyword`, { params })
+            .catch(e => {
+                throw new Error(e)
+            })
+        if (response) {
+            const regexs = response.data.data || []
+            return regexs
+        }
+        return false
+    } catch (e) {
+        console.error(e)
+        return false
+    }
+}
+
+module.exports = {
+    getKeywords: getKeywords,
+    addKeyword: addKeyword,
+    sendSlackMsg, sendSlackMsg,
+    getHotdealDatas:getHotdealDatas,
+    addHotDealDatas:addHotDealDatas
 }
