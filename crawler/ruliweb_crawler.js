@@ -1,5 +1,4 @@
 const { getCompareData, getSiteDomInfo , textClean } = require('../util/util');
-const {saveSearchData } = require('../util/files');
 const {ruliweb ,ruliwebUrl, type} = require('../appConstants');
 const {sendSlackMsg , addHotDealDatas} = require('../repository/repository');
 

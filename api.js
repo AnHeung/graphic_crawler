@@ -2,7 +2,7 @@ const quasarzone_crawler = require('./crawler/quasarzone_crawler');
 const ruriweb_crawler = require('./crawler/ruliweb_crawler');
 const clien_crawler = require('./crawler/clien_crawler');
 
-exports.run = async ()=>{
+(async ()=>{
     try {
         console.log('*** graphic_card_crawler start ***')
         await quasarzone_crawler.run()
@@ -13,4 +13,4 @@ exports.run = async ()=>{
         console.error(error)
         process.exit()
     } 
-}
+})()
