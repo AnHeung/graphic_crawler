@@ -108,3 +108,6 @@ dist
 
 #누적 데이터
 .searchData.json
+
+#환경
+*.env
