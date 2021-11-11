@@ -112,4 +112,5 @@ dist
 #환경
 .env
 .env.*
-.ecosystem.config.*
+ecosystem.config.json
+ecosystem.config.js
