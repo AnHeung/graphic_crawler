@@ -20,7 +20,8 @@ const sendSlackMsg = async (type, data) => {
     const params = { type, data }
 
     console.log(`API_KEY : ${API_KEY}`)
-    console.log(`process.env.API_KEY : ${process.env.API_KEY}`)
+    console.log(`API_KEY_VALUE: ${process.env.API_KEY_VALUE}`)
+    console.log(`headers : ${Axios.defaults.headers}`)
 
 
     return await Axios.post(SLACK_API_URL, params)
