@@ -1,6 +1,6 @@
 const Axios = require('axios');
 const { SLACK_API_URL, HOTDEAL_API_URL , API_KEY, API_KEY_VALUE} = require('../appConstants');
-Axios.defaults.headers[API_KEY] = API_KEY_VALUE
+Axios.defaults.headers.common[API_KEY] = API_KEY_VALUE
 
 const addKeyword = async keywordData => {
 
