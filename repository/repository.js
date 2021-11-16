@@ -19,11 +19,6 @@ const sendSlackMsg = async (type, data) => {
 
     const params = { type, data }
 
-    console.log(`API_KEY : ${API_KEY}`)
-    console.log(`API_KEY_VALUE: ${process.env.API_KEY_VALUE}`)
-    console.log(`headers : ${Axios.defaults.headers.kuma_api_key}`)
-
-
     return await Axios.post(SLACK_API_URL, params)
         .then(true)
         .catch(e => {
