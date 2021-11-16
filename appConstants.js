@@ -14,6 +14,8 @@ const clienbaseUrl = 'https://www.clien.net'
 const clien = 'clien'
 const SLACK_API_URL = process.env.SLACK_API_URL
 const HOTDEAL_API_URL = process.env.HOTDEAL_API_URL
+const API_KEY = process.env.API_KEY
+const API_KEY_VALUE = process.env.API_KEY_VALUE
 
 module.exports = {
     type:type,
@@ -26,5 +28,7 @@ module.exports = {
     clienbaseUrl: clienbaseUrl,
     clien: clien,
     SLACK_API_URL:SLACK_API_URL,
-    HOTDEAL_API_URL:HOTDEAL_API_URL
+    HOTDEAL_API_URL:HOTDEAL_API_URL,
+    API_KEY_VALUE:API_KEY_VALUE,
+    API_KEY : API_KEY
 }
