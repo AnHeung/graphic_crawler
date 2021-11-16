@@ -19,6 +19,8 @@ const sendSlackMsg = async (type, data) => {
 
     const params = { type, data }
 
+    console.error(`Axios 객체 ${JSON.stringify(Axios.default.headers)}`)
+
     return await Axios.post(SLACK_API_URL, params)
         .then(true)
         .catch(e => {
