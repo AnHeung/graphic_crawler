@@ -38,7 +38,10 @@ exports.textClean = (text) => isEmpty(text) ? text.replace(/[\n|\t|\r]/gmi, "").
 exports.getSiteDomInfo = async url => {
 
     try {
-        const site = await Axios.get(url).catch(e => { throw new Error(e) })
+       
+        const site = await  Axios.get(url, { 
+            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+        }).catch(e => { throw new Error(e) })
         return cheerio.load(site.data)
     } catch (e) {
         console.error(`망했음 다시 시도해 ${e}`)
